@@ -2,18 +2,23 @@
 
 # Packages
 
-install.packages("terra")
-install.packages("tidyverse")
-
-library(terra)
-library(dplyr)
+library(tidyverse)
 library(magrittr)
-library(stringr)
-library(purrr)
+library(terra)
+
+# Target
+
+dat_target = rast(nrows = 8192, 
+                  ncols = 8192, 
+                  xmin = -2500000, 
+                  xmax = 2500000, 
+                  ymin = 0, 
+                  ymax = 5000000, 
+                  crs = "ESRI:102013") # Albers Europe
 
 # Water
 
-#  Get files.
+#  Get files, process, reproject, and export.
 dat_water = 
   "data/water" %>% 
   list.files %>% 
@@ -24,20 +29,22 @@ dat_water =
            file %>% 
            paste0("data/water/", .) %>% 
            map(sds) %>%
-           map(extract,
+           map(magrittr::extract,
                1)) %>% 
   pull(dat) %>% 
   sprc %>% 
-  merge
-
-#  Crop to region of interest.
-
-#  Reproject to suit region.
-
-#  Rescale. 
-
-#  Export.
+  merge %>% 
+  project(dat_target,
+          method = "min") %>% 
+  subst(NA, 2) %T>% 
+  writeRaster("out/water.tif", overwrite = TRUE)
 
 # Mountains
 
-
+#  Get files, reproject, and export.
+dat_mountains = 
+  "data/mountains/GlobalMountainsK3Classes/k3classes.tif" %>% 
+  rast %>% 
+  project(dat_target,
+          method = "min") %T>% 
+  writeRaster("out/mountains.tif", overwrite = TRUE)

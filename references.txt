@@ -1,0 +1,7 @@
+Carroll, M., DiMiceli, C., Townshend, J., Sohlberg, R., Hubbard, A., Wooten, M., Spradlin, C., Gill, R., Strong, S., Burke, A., Blanco-Rojas, M., Frost, M. (2024). <i>MODIS/Terra Land Water Mask Derived from MODIS and SRTM L3 Global 250m SIN Grid V061</i> [Data set]. NASA EOSDIS Land Processes Distributed Active Archive Center. Accessed 2024-09-16 from https://doi.org/10.5067/MODIS/MOD44W.061
+
+Carroll, M. L., Townshend, J. R., DiMiceli, C. M., Noojipady, P., & Sohlberg, R. A. (2009). A new global raster water mask at 250 m resolution. International Journal of Digital Earth, 2(4), 291-308.
+
+https://rmgsc.cr.usgs.gov/gme/
+
+Karagulle, D., C. Frye, R. Sayre, S. Breyer, P. Aniello, R. Vaughan, and D. Wright. 2017. Modeling global Hammond landform regions from 250-m elevation data. Transactions in GIS, DOI: 10.1111/tgis.12265
