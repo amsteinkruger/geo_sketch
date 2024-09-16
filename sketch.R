@@ -46,5 +46,7 @@ dat_mountains =
   "data/mountains/GlobalMountainsK3Classes/k3classes.tif" %>% 
   rast %>% 
   project(dat_target,
-          method = "min") %T>% 
-  writeRaster("out/mountains.tif", overwrite = TRUE)
+          method = "min")
+
+dat_mountains %>% clamp(upper = 26) %>% writeRaster("out/mountains_more.tif", overwrite = TRUE)
+dat_mountains %>% clamp(lower = 31, value = FALSE) %>% writeRaster("out/mountains_less.tif", overwrite = TRUE)
